@@ -105,7 +105,7 @@ def get_data():
     last_date = datetime.strptime(all_dates[-1].split('/')[-2], date_format).strftime('%Y-%m-%d')
         
     # loop through all filtered dates (urls) up to 2024-07-28 within the last 192 weeks
-    for date in filtered_dates[:30]:
+    for date in filtered_dates:
         scrape_data_date(date)
 
     # combine extracted lists (columns) into dataframe

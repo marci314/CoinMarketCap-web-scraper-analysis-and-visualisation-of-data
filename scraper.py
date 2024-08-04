@@ -13,10 +13,11 @@ def get_data():
     circulating_supplies = []
     volumes_24hr = []
     pct_changes_7day = []
+
     # empty dataframe
     df = pd.DataFrame()
     
-    # function that scrapes urls for all available dates and appends them into list
+    # function that scrapes URLs for all available dates and appends them into list
     all_dates = []
     def scrape_date():
         url = 'https://coinmarketcap.com/historical/'
@@ -31,7 +32,7 @@ def get_data():
     # scrape available dates
     scrape_date()
     
-    # Filter the dates to include only those up to 2024-07-28 and within the last 192 weeks
+    # filter the dates to include only those up to 2024-07-28 and within the last 192 weeks
     cutoff_date = datetime.strptime("20240728", "%Y%m%d")
     start_date = cutoff_date - timedelta(weeks=192)
     filtered_dates = [date for date in all_dates if start_date <= datetime.strptime(date.split('/')[-2], "%Y%m%d") <= cutoff_date]
@@ -121,4 +122,3 @@ def get_data():
     })
 
     return df
-
